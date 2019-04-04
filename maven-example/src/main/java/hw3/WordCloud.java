@@ -3,7 +3,7 @@ import com.kennycanson.kumo.WordCloud;
 import java.io.*;
 import java.util.*;
 
-public class WordCount {
+public class WordCloud {
 	
 	public static void main(String[] args) throws IOException {
 		final FrequencyAnalyzer frequencyAnalyzer = new FrequencyAnalyzer();
