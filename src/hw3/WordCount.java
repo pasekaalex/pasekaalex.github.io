@@ -50,7 +50,7 @@ public class WordCount {
 		txtFile.close();
 		HashMap<String, Integer> sortedMapAsc = sortByValue(map);
 		
-		PrintWriter out = new PrintWriter("outputdata.txt");
+		PrintWriter out = new PrintWriter("WordFrequencyDataResults.txt");
 		
 		//Report frequencies into output file
 		for(String word: sortedMapAsc.keySet()) {

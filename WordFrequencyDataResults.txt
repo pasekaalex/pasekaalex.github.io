@@ -114,6 +114,7 @@
 1:	him
 1:	down
 1:	listen
+1:	'cause
 1:	spring
 1:	white
 1:	than
@@ -135,7 +136,6 @@
 1:	soul
 1:	songbird
 1:	show
-1:	cause
 1:	head
 1:	not
 1:	crying
