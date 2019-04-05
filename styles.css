@@ -1,51 +1,49 @@
 	body {
 		background-color: #664389;
-		font-family: Calibri;
 		text-align: center;
 	}
 	h1	{
 		color: #efe9f4;
-		font-size: 120%;
+		font-size: 150%;
 		font-style: bold;
 		text-decoration: underline overline white;
 	}
-	a:link, a:visited 	{
+	a:link,a:visited {
 		  background-color: #552299;
+		  box-shadow: 0 5px 0 #663399;
 		  color: #FFFFFF;
 		  padding: 10px 20px;
 		  text-align: center;
 		  text-decoration: none;
 		  display: inline-block;
-		}
-	a:hover, a:active {
-	 	background-color: #774499;
 	}
-	div {
+	a:hover,a:active{
+	 	background-color: #663399;
+	}
+	div{
 		display: block;
+  		margin-left: auto;
+	  	margin-right: auto;
 		width: 600px;
-		padding-right: 300px;
-		padding-left: 300px;
-	  	background-color: #774499;
-	  	padding: 10px;
+	  	background-color: #885599;
+	  	padding: 20px;
+		  	border: 3px;
+		   	border-top-style: dotted;
+	 		border-right-style: solid;
+	 		border-bottom-style: dotted;
+	 		border-left-style: solid;
+	  		border-color: #FFFFFF;
 	  	text-align: center;
 	  	align-content: center;
 	  	vertical-align: center;
 	}
-	p 	{
-		color: #d2c2e1;
+	p {
+		color: white;
 		text-align: center;
+		line-height: 150%;
+		font-family: Calibri;
 	}
-	#albumart { 
-  		display: inline-block;
-  		border: 5px;
+	img { 
+		border-style: solid;
   		border-color: #FFFFFF;
-  		height: 220px;
-  		width: 220px;
-	}
-	#wordcloud { 
-  		display: inline-block;
-  		border: 5px;
-  		border-color: #FFFFFF;
-  		height: 498px;
-  		width: 600px;
 	}
