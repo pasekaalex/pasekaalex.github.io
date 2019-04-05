@@ -7,3 +7,5 @@ The image was also generatable using Command Line Interface by installing Kumo u
 command used to generate word cloud through terminal:
 
 kumo --input "lyrics.txt" --output "stairway_failed.png" --color "(102,51,153),(178,140,217),(227,190,240)" --width 600 --height 498 --background "stairs.png" --collision pixel_perfect --font-type "Calibri"
+
+The repository is pretty messy. Kumo had several errors that required me to get .jar dependencies and add them in Eclipse.

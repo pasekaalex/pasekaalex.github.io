@@ -11,7 +11,6 @@ import com.kennycason.kumo.WordFrequency;
 import com.kennycason.kumo.font.scale.LinearFontScalar;
 import java.awt.*;
 import java.io.*;
-import java.util.*;
 
 public class App {
     public static void main( String[] args ) throws FileNotFoundException, java.io.IOException  {
@@ -20,7 +19,7 @@ public class App {
         frequencyAnalyzer.setMinWordLength(2);
 
 
-        final java.util.List<WordFrequency> wordFrequencies = frequencyAnalyzer.load("Lyrics.txt");
+        final java.util.List<WordFrequency> wordFrequencies = frequencyAnalyzer.load("WordFrequencyDataResults.txt");
 
         final Dimension dimension = new Dimension(600, 498);
         final WordCloud wordCloud = new WordCloud(dimension, CollisionMode.PIXEL_PERFECT);

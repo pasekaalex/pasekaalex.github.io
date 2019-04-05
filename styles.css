@@ -33,6 +33,7 @@
 	 		border-bottom-style: dotted;
 	 		border-left-style: solid;
 	  		border-color: #FFFFFF;
+	  		border-radius: 5px;
 	  	text-align: center;
 	  	align-content: center;
 	  	vertical-align: center;
@@ -46,4 +47,5 @@
 	img { 
 		border-style: solid;
   		border-color: #FFFFFF;
+  		border-radius: 5px;
 	}
