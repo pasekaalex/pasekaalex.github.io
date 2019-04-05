@@ -2,7 +2,13 @@
 		background-color: #664389;
 		font-family: Calibri;
 		text-align: center;
-		a:link, a:visited {
+	}
+	h1	{
+		color: #efe9f4;
+		font-size: 120%;
+		font-style: bold;
+	}
+	a:link, a:visited 	{
 		  background-color: #d2c2e1;
 		  color: white;
 		  padding: 15px 20px;
@@ -10,16 +16,10 @@
 		  text-decoration: none;
 		  display: inline-block;
 		}
-		a:hover, a:active {
-		  background-color: #774499;
-		}
+	a:hover, a:active {
+	 	background-color: #774499;
 	}
-	h1	{
-		color: #efe9f4;
-		font-size: 120%;
-		font-style: bold;
-	}
-	p {
+	p 	{
 		color: #d2c2e1;
 		font-size: 80%;
 	}
