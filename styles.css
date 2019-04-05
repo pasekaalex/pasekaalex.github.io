@@ -7,11 +7,12 @@
 		color: #efe9f4;
 		font-size: 120%;
 		font-style: bold;
+		text-decoration: underline overline white;
 	}
 	a:link, a:visited 	{
-		  background-color: #d2c2e1;
-		  color: white;
-		  padding: 15px 20px;
+		  background-color: #552299;
+		  color: #FFFFFF;
+		  padding: 10px 20px;
 		  text-align: center;
 		  text-decoration: none;
 		  display: inline-block;
@@ -19,7 +20,32 @@
 	a:hover, a:active {
 	 	background-color: #774499;
 	}
+	div {
+		display: block;
+		width: 600px;
+		padding-right: 300px;
+		padding-left: 300px;
+	  	background-color: #774499;
+	  	padding: 10px;
+	  	text-align: center;
+	  	align-content: center;
+	  	vertical-align: center;
+	}
 	p 	{
 		color: #d2c2e1;
-		font-size: 80%;
+		text-align: center;
+	}
+	#albumart { 
+  		display: inline-block;
+  		border: 5px;
+  		border-color: #FFFFFF;
+  		height: 220px;
+  		width: 220px;
+	}
+	#wordcloud { 
+  		display: inline-block;
+  		border: 5px;
+  		border-color: #FFFFFF;
+  		height: 498px;
+  		width: 600px;
 	}
