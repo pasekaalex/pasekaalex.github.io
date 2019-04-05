@@ -1,18 +1,22 @@
 	body {
-		background-color: D8BFD8;
+		background-color: #D8BFD8;
 		text-align: center;
 	}
 	h1	{
-		color: 663399;
+		color: #663399;
 	}
 	a:link, a:visited {
-	  background-color: #f44336;
+	  background-color: #663399;
 	  color: white;
-	  padding: 15px 25px;
+	  padding: 15px 20px;
 	  text-align: center;
 	  text-decoration: none;
 	  display: inline-block;
 	}
 	a:hover, a:active {
-	  background-color: red;
+	  background-color: #663399;
+	}
+	p {
+		color: #663399;
+		font-family: Calibri;
 	}
