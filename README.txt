@@ -2,7 +2,7 @@ I generated the word frequency using a HashMap in Java.
 
 I used the Kumo Library to construct a word cloud in the shape of a stairway for the lyrics of Stairway to Heaven by Led Zeppelin. I used the .jar version of the Kumo Library to import it to Eclipse and used the library's functions to create the image.
 
-The image was also generatable using Command Line Interface by installing Kumo using brew. However, the CLI was limited to a black background, and only produced this image.
+The image was also generatable using Command Line Interface by installing Kumo using brew. However, the CLI was limited to a black background, and only produced the stairway_failed.png.
 
 command used to generate word cloud through terminal:
 
