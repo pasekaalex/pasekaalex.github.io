@@ -1,20 +1,29 @@
+<!DOCTYPE html>
 <html>
+	<style>
+		body {background-color: D8BFD8;}
+		h1	{color: 663399;}
+
+	</style>
 	<h1>
-	<u><b>Stairway to Heaven By Led Zeppelin</b></u>
+	<b>Stairway to Heaven By Led Zeppelin</b>
 	</h1>
 		<body>
-			<img src="https://upload.wikimedia.org/wikipedia/en/2/26/Led_Zeppelin_-_Led_Zeppelin_IV.jpg" alt="Led Zeppelin IV">
+		<img src="https://upload.wikimedia.org/wikipedia/en/2/26/Led_Zeppelin_-_Led_Zeppelin_IV.jpg" alt="Led Zeppelin IV">
 			<br>
-			<a href="https://genius.com/Led-zeppelin-stairway-to-heaven-lyrics">Lyrics : Stairway to Heaven</a>
+		<a href="https://genius.com/Led-zeppelin-stairway-to-heaven-lyrics">Lyrics : Stairway to Heaven</a>
 			<br>
-			<img src="stairway.png" alt="Stairway to Heaven Lyrics - Word Cloud">
+		<img src="stairway.png" alt="Stairway to Heaven Lyrics - Word Cloud">
 			<br>
+		<p>
 			I generated the word frequency using a HashMap in Java.
 
-			I used the Kumo Library to construct a word cloud in the shape of a stairway for the lyrics of Stairway to Heaven by Led Zeppelin.
+			I used the Kumo Library to construct a word cloud in the shape of a stairway for the lyrics of Stairway to Heaven by Led Zeppelin. I used the .jar version of the Kumo Library to import it to eclipse and used the library's functions to create the image.
 
+			The image was also generatable using Command Line Interface by installing Kumo using brew. However, the CLI was limited to a black background, and only produced <a>" href=this image."</a>
 			command used to generate word cloud through terminal:
-			kumo --input "lyrics.txt" --output "stairway.png" --color "(102,51,153),(178,140,217),(227,190,240)" --width 600 --height 498 --background "stairs.png" --collision pixel_perfect --font-type "Calibri"
+			kumo --input "lyrics.txt" --output "stairway_failed.png" --color "(102,51,153),(178,140,217),(227,190,240)" --width 600 --height 498 --background "stairs.png" --collision pixel_perfect --font-type "Calibri"
+		</p>
 			<br>
 		</body>
 </html>
