@@ -2,22 +2,22 @@
 		background-color: #D8BFD8;
 		font-family: Calibri;
 		text-align: center;
+		a:link, a:visited {
+		  background-color: #663399;
+		  color: white;
+		  padding: 15px 20px;
+		  text-align: center;
+		  text-decoration: none;
+		  display: inline-block;
+		}
+		a:hover, a:active {
+		  background-color: #663399;
+		}
 	}
 	h1	{
 		color: #663399;
 		font-size: 120%;
 		font-style: bold;
-	}
-	a:link, a:visited {
-	  background-color: #663399;
-	  color: white;
-	  padding: 15px 20px;
-	  text-align: center;
-	  text-decoration: none;
-	  display: inline-block;
-	}
-	a:hover, a:active {
-	  background-color: #663399;
 	}
 	p {
 		color: #663399;
