@@ -1,9 +1,9 @@
 	body {
-		background-color: #D8BFD8;
+		background-color: #664389
 		font-family: Calibri;
 		text-align: center;
 		a:link, a:visited {
-		  background-color: #663399;
+		  background-color: #d2c2e1;
 		  color: white;
 		  padding: 15px 20px;
 		  text-align: center;
@@ -15,11 +15,11 @@
 		}
 	}
 	h1	{
-		color: #663399;
+		color: #efe9f4;
 		font-size: 120%;
 		font-style: bold;
 	}
 	p {
-		color: #663399;
+		color: #d2c2e1;
 		font-size: 80%;
 	}
