@@ -21,17 +21,17 @@
 	a:hover,a:active{
 	 	background-color: #663399;
 	}
-	div{
+	div1{
 		display: block;
   		margin-left: auto;
 	  	margin-right: auto;
 		width: 600px;
-	  	background-color: #fde5f6;
+	  	background-color: #d2c2e1;
 	  	padding: 20px;
 		  	border: 3px;
-		   	border-top-style: dotted;
+		   	border-top-style: dashed;
 	 		border-right-style: solid;
-	 		border-bottom-style: dotted;
+	 		border-bottom-style: dashed;
 	 		border-left-style: solid;
 	  		border-color: #331166;
 	  		border-radius: 5px;
@@ -40,7 +40,7 @@
 	  	vertical-align: center;
 	}
 	p {
-		color: #552299;
+		color: #331166;
 		text-align: center;
 		line-height: 150%;
 		font-family: Calibri;
@@ -60,18 +60,33 @@
 		font-size: 65%;
 		text-decoration: underline;
 	}
-		div2{
+	div2{
 			display: block;
 	  		margin-left: auto;
 		  	margin-right: auto;
 			width: 350px;
-		  	background-color: #fde5f6;
+		  	background-color: #d2c2e1;
 		  	padding: 20px;
 		  	border: 3px;
 	 		border-right-style: dashed;
 	 		border-left-style: dashed;
+	 		border-bottom-style: dashed;
+	 		border-bottom-right-radius: 5px;
+	 		border-bottom-left-radius: 5px;
 	  		border-color: #331166;
 		 	text-align: center;
 		 	align-content: center;
 			vertical-align: center;
+	}
+	p2 {
+		color: #331166;
+		text-align: center;
+		font-style: bold;
+		line-height: 115%;
+		font-family: Calibri;
+	}
+	div3{
+		border: 0px;
+		margin-left: -45%;
+		position: fixed;
 	}

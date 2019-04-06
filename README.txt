@@ -8,4 +8,10 @@ command used to generate word cloud through terminal:
 
 kumo --input "lyrics.txt" --output "stairway_failed.png" --color "(102,51,153),(178,140,217),(227,190,240)" --width 600 --height 498 --background "stairs.png" --collision pixel_perfect --font-type "Calibri"
 
-The repository is pretty messy. Kumo had several errors that required me to get .jar dependencies and add them in Eclipse.
+Kumo had several errors that required me to get .jar dependencies and add them in Eclipse.
+I put all the dependencies in their respective folder.
+
+index.html in root is for the website: pasekaalex.github.io
+styles.css is the stylesheet for the website
+
+src/hw3/ contains WordCount.Java which generated the WordFrequencyDataResults.txt found in root.
