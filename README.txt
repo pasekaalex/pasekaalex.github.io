@@ -14,4 +14,6 @@ I put all the dependencies in their respective folder.
 index.html in root is for the website: pasekaalex.github.io
 styles.css is the stylesheet for the website
 
-src/hw3/ contains WordCount.Java which generated the WordFrequencyDataResults.txt found in root.
+hw3/ contains WordCount.Java which generated the WordFrequencyDataResults.txt found in root.
+
+hw3/ contains App.Java which generated Stairway.png using the Kumo Library
