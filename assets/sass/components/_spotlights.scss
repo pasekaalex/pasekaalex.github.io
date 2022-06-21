@@ -1,5 +1,5 @@
 ///
-/// Forty by HTML5 UP
+/// Hyperspace by HTML5 UP
 /// html5up.net | @ajlkn
 /// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 ///
@@ -7,16 +7,14 @@
 /* Spotlights */
 
 	.spotlights {
-		border-top: 0 !important;
-
-		& + * {
-			border-top: 0 !important;
-		}
-
 		> section {
 			@include vendor('display', 'flex');
 			@include vendor('flex-direction', 'row');
-			background-color: desaturate(lighten(_palette(bg-alt), 2), 1);
+			min-height: 22.5em;
+
+			body.is-ie & {
+				min-height: 0;
+			}
 
 			> .image {
 				background-position: center center;
@@ -24,15 +22,15 @@
 				border-radius: 0;
 				display: block;
 				position: relative;
-				width: 30%;
+				width: 25em;
 
 				img {
 					border-radius: 0;
 					display: block;
-					width: 100%;
 				}
 
 				&:before {
+					@include vendor('transition', 'opacity #{_duration(activation)} ease');
 					background: transparentize(_palette(bg), 0.1);
 					content: '';
 					display: block;
@@ -46,74 +44,88 @@
 			}
 
 			> .content {
+				@include padding(4em, 5em);
 				@include vendor('display', 'flex');
 				@include vendor('flex-direction', 'column');
 				@include vendor('justify-content', 'center');
-				@include vendor('align-items', 'center');
-				@include padding(2em, 3em);
-				width: 70%;
+				width: #{_size(inner-width) - 25em};
+				-ms-flex: 1;
 
 				> .inner {
-					margin: 0 auto;
-					max-width: 100%;
-					width: _size(inner);
+					@include vendor('transform', 'translateX(0) translateY(0)');
+					@include vendor('transition', (
+						'opacity #{_duration(activation)} ease',
+						'transform #{_duration(activation)} ease'
+					));
+					opacity: 1;
 				}
 			}
 
-			&:nth-child(2n) {
-				@include vendor('flex-direction', 'row-reverse');
-				background-color: desaturate(lighten(_palette(bg-alt), 4), 2);
-
-				> .content {
-					@include vendor('align-items', 'flex-end');
-				}
+			&:nth-child(1) {
 			}
-		}
 
-		@include breakpoint('<=xlarge') {
-			> section {
+			&:nth-child(2) {
+				background-color: rgba(0,0,0,0.05);
+			}
+
+			&:nth-child(3) {
+				background-color: rgba(0,0,0,0.1);
+			}
+
+			&.inactive,
+			body.is-preload & {
 				> .image {
-					width: 40%;
+					&:before {
+						opacity: 1;
+					}
 				}
 
 				> .content {
-					width: 60%;
+					> .inner {
+						@include vendor('transform', 'translateX(-1em)');
+						opacity: 0;
+					}
 				}
 			}
-		}
 
-		@include breakpoint('<=large') {
-			> section {
-				> .image {
-					width: 45%;
-				}
-
+			@include breakpoint('<=xlarge') {
 				> .content {
-					width: 55%;
+					@include padding(4em, 4em);
 				}
 			}
-		}
 
-		@include breakpoint('<=medium') {
-			> section {
+			@include breakpoint('<=medium') {
 				display: block;
 
 				> .image {
 					width: 100%;
+					height: 50vh;
 				}
 
 				> .content {
-					@include padding(4em, 3em);
 					width: 100%;
 				}
-			}
-		}
 
-		@include breakpoint('<=small') {
-			> section {
+				&.inactive,
+				body.is-preload & {
+					> .content {
+						> .inner {
+							@include vendor('transform', 'translateY(1em)');
+						}
+					}
+				}
+			}
+
+			@include breakpoint('<=small') {
+				> .image {
+					height: 50vh;
+					min-height: 15em;
+				}
+
 				> .content {
-					@include padding(3em, 1.5em);
+					@include padding(3em, 2em);
 				}
 			}
 		}
 	}
+

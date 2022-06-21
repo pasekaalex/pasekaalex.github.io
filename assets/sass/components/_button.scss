@@ -1,5 +1,5 @@
 ///
-/// Forty by HTML5 UP
+/// Hyperspace by HTML5 UP
 /// html5up.net | @ajlkn
 /// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 ///
@@ -13,42 +13,49 @@
 	.button {
 		@include vendor('appearance', 'none');
 		@include vendor('transition', (
-			'background-color #{_duration(transition)} ease-in-out',
-			'box-shadow #{_duration(transition)} ease-in-out',
-			'color #{_duration(transition)} ease-in-out'
+			'border-color #{_duration(transition)} ease'
 		));
 		background-color: transparent;
-		border: 0;
-		border-radius: 0;
-		box-shadow: inset 0 0 0 2px _palette(fg-bold);
-		color: _palette(fg-bold);
+		border: solid 1px !important;
+		border-color: _palette(border) !important;
+		border-radius: 3em;
+		color: _palette(fg-bold) !important;
 		cursor: pointer;
 		display: inline-block;
-		font-size: 0.8em;
+		font-size: 0.6em;
 		font-weight: _font(weight-bold);
-		height: 3.5em;
-		letter-spacing: _font(letter-spacing-alt);
-		line-height: 3.5em;
-		padding: 0 1.75em;
+		height: calc(4.75em + 2px);
+		letter-spacing: _font(kerning-alt);
+		line-height: 4.75em;
+		outline: 0;
+		padding: 0 3.75em;
+		position: relative;
 		text-align: center;
 		text-decoration: none;
 		text-transform: uppercase;
 		white-space: nowrap;
 
-		&:hover, &:active {
-			box-shadow: inset 0 0 0 2px _palette(highlight);
-			color: _palette(highlight);
-		}
-
-		&:active {
-			background-color: transparentize(_palette(highlight), 0.9);
-			box-shadow: inset 0 0 0 2px desaturate(darken(_palette(highlight), 15), 5);
-			color: desaturate(darken(_palette(highlight), 15), 5);
+		&:after {
+			@include vendor('transform', 'scale(0.25)');
+			@include vendor('pointer-events', 'none');
+			@include vendor('transition', (
+				'opacity #{_duration(transition)} ease',
+				'transform #{_duration(transition)} ease'
+			));
+			background: _palette(fg-bold);
+			border-radius: 3em;
+			content: '';
+			height: 100%;
+			left: 0;
+			opacity: 0;
+			position: absolute;
+			top: 0;
+			width: 100%;
 		}
 
 		&.icon {
 			&:before {
-				margin-right: 0.5em;
+				margin-right: 0.75em;
 			}
 		}
 
@@ -57,74 +64,43 @@
 		}
 
 		&.small {
-			font-size: 0.6em;
+			font-size: 0.4em;
 		}
 
 		&.large {
-			font-size: 1.25em;
-			height: 3em;
-			line-height: 3em;
-		}
-
-		&.next {
-			padding-right: 4.5em;
-			position: relative;
-
-			&:before, &:after {
-				@include vendor('transition', 'opacity #{_duration(transition)} ease-in-out');
-				background-position: center right;
-				background-repeat: no-repeat;
-				background-size: 36px 24px;
-				content: '';
-				display: block;
-				height: 100%;
-				position: absolute;
-				right: 1.5em;
-				top: 0;
-				vertical-align: middle;
-				width: 36px;
-			}
-
-			&:before {
-				background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36px" height="24px" viewBox="0 0 36 24" zoomAndPan="disable"><style>line { stroke: #{_palette(fg-bold)}; stroke-width: 2px; }</style><line x1="0" y1="12" x2="34" y2="12" /><line x1="25" y1="4" x2="34" y2="12.5" /><line x1="25" y1="20" x2="34" y2="11.5" /></svg>');
-			}
-
-			&:after {
-				background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36px" height="24px" viewBox="0 0 36 24" zoomAndPan="disable"><style>line { stroke: #{_palette(highlight)}; stroke-width: 2px; }</style><line x1="0" y1="12" x2="34" y2="12" /><line x1="25" y1="4" x2="34" y2="12.5" /><line x1="25" y1="20" x2="34" y2="11.5" /></svg>');
-				opacity: 0;
-				z-index: 1;
-			}
-
-			&:hover, &:active {
-				&:after {
-					opacity: 1;
-				}
-			}
-
-			@include breakpoint('<=large') {
-				padding-right: 5em;
-			}
+			font-size: 0.8em;
 		}
 
 		&.primary {
 			background-color: _palette(fg-bold);
-			box-shadow: none;
-			color: _palette(bg);
+			color: _palette(bg) !important;
 
-			&:hover, &:active {
-				background-color: _palette(highlight);
-				color: _palette(bg) !important;
-			}
-
-			&:active {
-				background-color: desaturate(darken(_palette(highlight), 15), 5);
+			&:after {
+				display: none;
 			}
 		}
 
 		&.disabled,
 		&:disabled {
-			@include vendor('pointer-events', 'none');
 			cursor: default;
-			opacity: 0.25;
+			opacity: 0.5;
+			@include vendor('pointer-events', 'none');
+		}
+
+		&:hover {
+			border-color: _palette(fg) !important;
+
+			&:after {
+				opacity: 0.05;
+				@include vendor('transform', 'scale(1)');
+			}
+
+			&:active {
+				border-color: _palette(fg-bold) !important;
+
+				&:after {
+					opacity: 0.1;
+				}
+			}
 		}
 	}

@@ -1,5 +1,5 @@
 ///
-/// Forty by HTML5 UP
+/// Hyperspace by HTML5 UP
 /// html5up.net | @ajlkn
 /// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 ///
@@ -7,36 +7,32 @@
 /* Footer */
 
 	#footer {
-		.copyright {
-			font-size: 0.8em;
-			list-style: none;
-			padding-left: 0;
+		#sidebar + #wrapper + & {
+			margin-left: _size(sidebar-width);
 
-			li {
-				border-left: solid 1px _palette(border);
-				color: _palette(fg-light);
-				display: inline-block;
-				line-height: 1;
-				margin-left: 1em;
-				padding-left: 1em;
-
-				&:first-child {
-					border-left: 0;
-					margin-left: 0;
-					padding-left: 0;
-				}
+			@include breakpoint('<=large') {
+				margin-left: 0;
 			}
 		}
 
-		@include breakpoint('<=xsmall') {
-			.copyright {
-				li {
-					display: block;
-					border-left: 0;
-					margin-left: 0;
-					padding-left: 0;
-					line-height: inherit;
+		> .inner {
+			a {
+				border-bottom-color: _palette(border);
+
+				&:hover {
+					border-bottom-color: transparent;
 				}
+			}
+
+			.menu {
+				font-size: 0.8em;
+				color: _palette(border);
+			}
+		}
+
+		#header + #wrapper + & {
+			> .inner {
+				margin: 0 auto;
 			}
 		}
 	}

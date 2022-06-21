@@ -1,5 +1,5 @@
 ///
-/// Forty by HTML5 UP
+/// Hyperspace by HTML5 UP
 /// html5up.net | @ajlkn
 /// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 ///
@@ -31,35 +31,42 @@
 			}
 		}
 
-		&.alt {
-			&:before {
-				background-color: _palette(fg-bold);
-				border-radius: 100%;
-				color: _palette(bg);
-				display: inline-block;
-				height: 2em;
-				line-height: 2em;
-				text-align: center;
-				width: 2em;
-			}
-		}
-	}
+		&.major {
+			width: 2.5em;
+			height: 2.5em;
+			display: block;
+			background: _palette(fg-bold);
+			border-radius: 100%;
+			color: _palette(bg);
+			text-align: center;
+			line-height: 2.5em;
+			margin: 0 0 (_size(element-margin) * 0.65) 0;
 
-	a.icon {
-		&.alt {
 			&:before {
-				@include vendor('transition', 'background-color #{_duration(transition)} ease-in-out');
-			}
+				font-size: 1.25em;
 
-			&:hover {
-				&:before {
-					background-color: _palette(accent1);
+				.wrapper.style1 & {
+					color: _palette(accent1);
 				}
-			}
 
-			&:active {
-				&:before {
-					background-color: desaturate(darken(_palette(accent1), 15), 5);
+				.wrapper.style1-alt & {
+					color: _palette(accent1-alt);
+				}
+
+				.wrapper.style2 & {
+					color: _palette(accent2);
+				}
+
+				.wrapper.style2-alt & {
+					color: _palette(accent2-alt);
+				}
+
+				.wrapper.style3 & {
+					color: _palette(accent3);
+				}
+
+				.wrapper.style3-alt & {
+					color: _palette(accent3-alt);
 				}
 			}
 		}
