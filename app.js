@@ -5,9 +5,9 @@ let columns = 0,
     toggled = false;
 
 const toggle = () => {
-    toggled = !toggled;
-        
-    document.body.classList.toggle("toggled");
+  toggled = !toggled;
+  
+  document.body.classList.toggle("toggled");
 }
 
 const colors = [

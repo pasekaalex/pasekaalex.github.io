@@ -1,14 +1,7 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  list-style: none;
-}
-
 :root {
-  --g1: rgb(77, 49, 76);
-  --g2: rgb(92, 70, 98);
-  --g3: rgb(107, 38, 122);
+  --g1: rgb(179, 88, 176);
+  --g2: rgb(140, 38, 169);
+  --g3: rgb(188, 53, 157);
 }
 
 .wrapper {
@@ -93,7 +86,7 @@ body.toggled > #tiles > .tile:hover {
 }
 
 #title > .fancy {
-  color: var(--g2);
+  color: var(--g3);
   font-family: 'Dancing Script', cursive;
   font-size: 1.5em;
   line-height: 0.9em;
