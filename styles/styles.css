@@ -22,7 +22,7 @@
 }
 
 body {
-  animation: background-pan 10s linear infinite;
+  animation: background-pan 8s linear infinite;
   background: linear-gradient(to right, var(--g1),var(--g2),var(--g3),var(--g1));
   background-size: 200%;
   height: 100vh;
