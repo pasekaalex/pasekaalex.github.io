@@ -1,7 +1,14 @@
 const wrapper = document.getElementById("tiles");
 
 let columns = 0,
-    rows = 0;
+    rows = 0,
+    toggled = false;
+
+const toggle = () => {
+    toggled = !toggled;
+        
+    document.body.classList.toggle("toggled");
+}
 
 const colors = [
     "rgb(229, 57, 53)",
@@ -16,9 +23,9 @@ let count = -1;
 
 const handleOnClick = index => {
     //count = count + 1;
-    toggled = !toggled;
+    toggle();
 
-    document.body.classList.toggle("toggled");
+    //document.body.classList.toggle("toggled");
 
     anime({
         targets: ".tile",
@@ -34,6 +41,7 @@ const handleOnClick = index => {
 const createTile = index => {
     const tile = document.createElement("div");
     tile.classList.add("tile");
+    tile.style.opacity = toggled ? 0 : 1;
     tile.onclick = e => handleOnClick(index);
     return tile;
 }
@@ -43,13 +51,13 @@ const createTiles = quantity => {
     })
 }
 
-createTiles(columns * rows);
+//createTiles(columns * rows);
 
 const createGrid = () => {
     wrapper.innerHTML = "";
-
-    columns = Math.floor(document.body.clientWidth / 50);
-    rows = Math.floor(document.body.clientHeight / 50);
+    const size = document.body.clientWidth > 800 ? 100 : 50;
+    columns = Math.floor(document.body.clientWidth / size);
+    rows = Math.floor(document.body.clientHeight / size);
 
     wrapper.style.setProperty("--columns", columns);
     wrapper.style.setProperty("--rows", rows);
@@ -57,4 +65,7 @@ const createGrid = () => {
     createTiles(columns * rows);
 }
 
+createGrid();
+
 window.onresize = () => createGrid();
+
