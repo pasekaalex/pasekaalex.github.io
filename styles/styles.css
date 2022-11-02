@@ -1,7 +1,12 @@
 :root {
-  --g1: rgb(179, 88, 176);
-  --g2: rgb(140, 38, 169);
-  --g3: rgb(188, 53, 157);
+  --g1: rgb(235, 119, 231);
+  --g2: rgb(199, 95, 227);
+  --g3: rgb(240, 60, 198);
+  --z1: rgb(240,244,236);
+  --z2: rgb(212,206,70);
+  --z3: rgb(189,125,171);
+  --z4: rgb(133,153,187);
+  --z5: rgb(251,226,197);
 }
 
 .wrapper {
@@ -71,11 +76,11 @@ body.toggled > #tiles > .tile:hover {
 }
 
 .custom-shape-divider-top-1667334325 .shape-fill {
-  fill: #923CDD;
+  fill: var(--z3);
 }
 
 #title {
-  color: white;
+  color: var(--z1);
   font-family: "Rubik", sans-serif;
   font-size: 6vw;
   margin: 0px;
@@ -86,7 +91,7 @@ body.toggled > #tiles > .tile:hover {
 }
 
 #title > .fancy {
-  color: lavender;
+  color: var(--z1);
   font-family: "Rubik", sans-serif;
   font-size: 1.1em;
   line-height: 0.9em;
