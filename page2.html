@@ -1,0 +1,253 @@
+<script src="/anime-master/lib/anime.min.js"></script>
+<script src="/anime-master/lib/anime.js"></script>
+<style>
+:root {
+  --g1: rgb(179, 88, 176);
+  --g2: rgb(140, 38, 169);
+  --g3: rgb(188, 53, 157);
+}
+
+@keyframes background-pan {
+  from {
+    background-position: 0% center;
+  }
+  
+  to {
+    background-position: -200% center;
+  }
+}
+
+body {
+  animation: background-pan 8s linear infinite;
+  background: linear-gradient(to right, var(--g1),var(--g2),var(--g3),var(--g1));
+  background-size: 200%;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0px;
+}
+
+body.toggled {
+  animation: none;
+}
+
+body.toggled > #title {
+  opacity: 0;
+}
+
+body.toggled > #icon {
+  opacity: 1;
+}
+
+body.toggled > #tiles > .tile:hover {
+  opacity: 0.1 !important;
+}
+
+.centered {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#tiles {
+  height: calc(100vh - 1px);
+  width: calc(100vw - 1px);
+  position: relative;
+  z-index: 2;
+  
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  grid-template-rows: repeat(var(--rows), 1fr);
+}
+
+.tile {
+  cursor: pointer;
+  position: relative;
+}
+
+.tile:hover:before {
+  background-color: rgb(30, 30, 30);
+}
+
+.tile:before {
+  background-color: rgb(15, 15, 15);
+  content: "";
+  inset: 0.5px;
+  position: absolute;
+}
+
+#title {
+  color: white;
+  font-family: "Rubik", sans-serif;
+  font-size: 6vw;
+  margin: 0px;
+  pointer-events: none;
+  transition: opacity 1200ms ease;
+  width: 50vw;
+  z-index: 3;
+}
+
+#title > .fancy {
+  color: lavender;
+  font-family: "Rubik", sans-serif;
+  font-size: 1.1em;
+  line-height: 0.9em;
+}
+
+#icon {
+  color: rgba(255, 255, 255, 0.15);
+  font-size: 80vmin;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1200ms ease;
+  z-index: 1;
+}
+
+body.menu-toggled > .meta-link > span {
+  color: rgb(30, 30, 30);
+}
+
+
+#source-link {
+  margin-left: 65%;
+  bottom: 30%;
+}
+
+#source-link > i {
+  color: rgb(249, 119, 225);
+}
+#source-link2 {
+  margin-left: 65%;
+  bottom: 22%;
+}
+
+#source-link2 > i {
+  color: rgb(249, 119, 225);
+}
+#source-link3 {
+  margin-left: 65%;
+  bottom: 14%;
+}
+
+#source-link3 > i {
+  color: rgb(249, 119, 225);
+}
+.meta-link {
+  align-items: center;
+  backdrop-filter: blur(3px);
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  bottom: 10px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+  cursor: pointer;  
+  display: inline-flex;
+  gap: 5px;
+  left: 10px;
+  padding: 10px 25px;
+  position: fixed;
+  text-decoration: none;
+  transition: background-color 400ms, border-color 400ms;
+  z-index: 10000;
+}
+
+.meta-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.meta-link > i, .meta-link > span {
+  height: 20px;
+  line-height: 20px;
+}
+
+.meta-link > span {
+  color: lavender;
+  font-family: "Rubik", sans-serif;
+  transition: color 400ms;
+}
+
+</style>
+
+
+<div id="tiles"></div>
+
+<h1 id="title" class="centered">
+    Give it a 
+      <span class="fancy">click!</span>
+    </h1>
+    
+    <a id="source-link" class="meta-link" href="https://twitter.com/vyvanse70mg" target="_blank">
+        <i class="fa-solid fa-link"></i>
+        <span>@vyvanse70mg</span>
+      </a>
+<a id="source-link2" class="meta-link" href="index.html" target="_blank">
+    <i class="fa-solid fa-link"></i>
+    <span>home?</span>
+  </a>
+
+<script>
+
+const wrapper = document.getElementById("tiles");
+
+let columns = 0,
+    rows = 0,
+    toggled = false;
+
+const toggle = () => {
+  toggled = !toggled;
+  
+  document.body.classList.toggle("toggled");
+}
+
+const handleOnClick = index => {
+  toggle();
+  
+  anime({
+    targets: ".tile",
+    opacity: toggled ? 0 : 1,
+    delay: anime.stagger(50, {
+      grid: [columns, rows],
+      from: index
+    })
+  });
+}
+
+const createTile = index => {
+  const tile = document.createElement("div");
+  
+  tile.classList.add("tile");
+  
+  tile.style.opacity = toggled ? 0 : 1;
+  
+  tile.onclick = e => handleOnClick(index);
+  
+  return tile;
+}
+
+const createTiles = quantity => {
+  Array.from(Array(quantity)).map((tile, index) => {
+    wrapper.appendChild(createTile(index));
+  });
+}
+
+const createGrid = () => {
+  wrapper.innerHTML = "";
+  
+  const size = document.body.clientWidth > 800 ? 100 : 50;
+  
+  columns = Math.floor(document.body.clientWidth / size);
+  rows = Math.floor(document.body.clientHeight / size);
+  
+  wrapper.style.setProperty("--columns", columns);
+  wrapper.style.setProperty("--rows", rows);
+  
+  createTiles(columns * rows);
+}
+
+createGrid();
+
+window.onresize = () => createGrid();
+
+
+</script>

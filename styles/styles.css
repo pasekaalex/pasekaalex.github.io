@@ -152,7 +152,14 @@ body.menu-toggled > .meta-link > span {
 #source-link2 > i {
   color: rgb(249, 119, 225);
 }
+#source-link3 {
+  margin-left: 65%;
+  bottom: 14%;
+}
 
+#source-link3 > i {
+  color: rgb(249, 119, 225);
+}
 .meta-link {
   align-items: center;
   backdrop-filter: blur(3px);
@@ -188,6 +195,62 @@ body.menu-toggled > .meta-link > span {
   transition: color 400ms;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Subrayada&display=swap');
+h2{
+  font-size: 6rem;
+  font-weight: 100;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat Subrayada', sans-serif;
+}
+
+.neon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;  
+  text-shadow: 
+    0 0 0.033em #fff, 
+    0 0 0.08em #fff,
+    0 0 0.1em #ff009b, 
+    0 0 0.2em #ff009b, 
+    0 0 0.3em #ff009b, 
+    0 0 1em #ff009b,
+    0 0 1.5em #ff009b;
+}
+
+.neon span{
+  animation-name: flicker;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.neon span:nth-child(2n){
+  animation-delay: 3s;
+}
+
+@keyframes flicker {
+  0%,
+  19.999%,
+  22%,
+  62.999%,
+  64%,
+  64.999%,
+  72%,
+  100% {
+    opacity: 1;
+  }
+  20%,
+  21.999%,
+  63%,
+  63.999%,
+  65%,
+  71.999% {
+    opacity: 0.33;
+  }
+}
 
 @import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
 
