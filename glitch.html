@@ -1,0 +1,46 @@
+<script src="/anime-master/lib/anime.min.js"></script>
+<script src="/anime-master/lib/anime.js"></script>
+<script src="app.js"></script>
+<link rel="stylesheet" href="styles/styles.css">
+
+
+<div class="crt-screen"><svg viewBox="0 0 300 200" xmlns='http://www.w3.org/2000/svg'>
+    <defs>
+      <filter id='screen-noise'>
+        <feTurbulence type='turbulence' result='noise' baseFrequency='0.2' numOctaves='1' seed='2' stitchTiles='noStitch' />
+        <feOffset dy="0" dx="0">
+          <animate attributeName="dy" values="0;-20" dur=".1s" repeatCount="indefinite" />
+          <animate attributeName="dx" values="0;20" dur=".3s" repeatCount="indefinite" />
+        </feOffset>
+        <feComponentTransfer>
+          <feFuncR type="linear" slope="1" intercept="-0.4" />
+          <feFuncG type="linear" slope="1" intercept="-0.4" />
+          <feFuncB type="linear" slope="1" intercept="-0.4" />
+        </feComponentTransfer>
+        <feBlend in="SourceGraphic" in2="noiseElement" mode="multiply" result="screen-content" />
+        <feTurbulence baseFrequency="0.01 1" result="waves" numOctaves="2" />
+        <feDisplacementMap in="screen-content" in2="waves" scale="2" xChannelSelector="R" yChannelSelector="R">
+          <animate attributeName="scale" values="0;10;0;50;5" dur="9s" repeatCount="indefinite" />
+        </feDisplacementMap>
+      </filter>
+      <filter id="Glow" x="-30%" y="-30%" width="160%" height="160%">
+        <feGaussianBlur stdDeviation="6 2" result="glow" />
+        <feMerge>
+          <feMergeNode in="glow" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+
+      <pattern id="Grid" x="0" y="0" width="0.2" height="0.2">
+        <rect x="0" y="0" width="100px" height="100px" stroke='blue' fill='transparent' stroke-width='2' />
+        <rect x="2" y="0" width="100px" height="100px" stroke='green' fill='transparent' stroke-width='2' />
+        <animateTransform attributeType="xml" attributeName="patternTransform" type="translate" values="0,0;60,40" dur="5s" repeatCount="indefinite" />
+      </pattern>
+    </defs>
+    <rect height="0%" width="0%" fill="url(#Grid)" filter="url(#Glow)" />
+    <text x="50%" y="50%" dy=".35em" text-anchor="middle">
+      alex paseka
+    </text>
+    <animateTransform attributeType="xml" attributeName="transform" type="translate" values="0,0;0,3;0,-2;0,0;0,5;0,0;0,-3" dur="2s" repeatCount="indefinite" />
+  </svg>
+</div>

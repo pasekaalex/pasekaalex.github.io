@@ -138,10 +138,18 @@ body.menu-toggled > .meta-link > span {
 
 #source-link {
   margin-left: 65%;
-  bottom: 45%;
+  bottom: 30%;
 }
 
 #source-link > i {
+  color: rgb(249, 119, 225);
+}
+#source-link2 {
+  margin-left: 65%;
+  bottom: 22%;
+}
+
+#source-link2 > i {
   color: rgb(249, 119, 225);
 }
 
@@ -178,4 +186,44 @@ body.menu-toggled > .meta-link > span {
   color: lavender;
   font-family: "Rubik", sans-serif;
   transition: color 400ms;
+}
+
+
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
+
+body {
+	background-color: black;
+	overflow: hidden;
+}
+
+svg {
+	font-family: "Rubik", sans-serif;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	filter: url(#screen-noise);
+}
+
+body:before {
+	content: " ";
+	position: absolute;
+	z-index: 10;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	background-image: linear-gradient(
+			0deg,
+			transparent 50%,
+			rgba(0, 0, 0, 0.8) 10%
+		),
+		linear-gradient(90deg, transparent 80%, rgba(0, 0, 0, 0.8) 10%);
+	background-size: 3px 3px;
+}
+
+svg text {
+	text-transform: lowercase;
+	fill: lavender;
+	font-size: 32px;
+	filter: url(#Glow);
 }
