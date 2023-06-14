@@ -1,0 +1,205 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(to bottom, #ffcc00, #ff6600);
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1 {
+    color: white;
+  }
+
+  #click-button {
+    margin-top: 20px;
+  }
+
+  #flower-container {
+    margin-top: 50px;
+  }
+
+  #made-by {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    color: white;
+    font-size: 14px;
+  }
+
+  #github-link {
+    margin-left: 5px;
+  }
+
+  #score {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  #click-button {
+    font-size: 36px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    position: relative;
+    z-index: 1;
+  }
+
+  #flower-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 400px;
+    margin-bottom: 20px;
+  }
+
+  .petal {
+    position: absolute;
+    background-color: #FFC0CB;
+    width: 80px;
+    height: 150px;
+    border-radius: 50%;
+    transform: rotate(-45deg);
+    transform-origin: bottom;
+  }
+
+  .petal::before {
+    content: "";
+    position: absolute;
+    background-color: #FFC0CB;
+    width: 80px;
+    height: 150px;
+    border-radius: 50%;
+    transform: rotate(90deg);
+  }
+
+  .petal:nth-child(1) {
+    top: -60px;
+    left: 0;
+  }
+
+  .petal:nth-child(1)::before {
+    top: 60px;
+    left: -150px;
+  }
+
+  .petal:nth-child(2) {
+    top: -60px;
+    right: 0;
+  }
+
+  .petal:nth-child(2)::before {
+    top: 60px;
+    right: -150px;
+  }
+
+  .petal:nth-child(3) {
+    bottom: -60px;
+    left: 0;
+  }
+
+  .petal:nth-child(3)::before {
+    bottom: 60px;
+    left: -150px;
+  }
+
+  .petal:nth-child(4) {
+    bottom: -60px;
+    right: 0;
+  }
+
+  .petal:nth-child(4)::before {
+    bottom: 60px;
+    right: -150px;
+  }
+
+  .stem {
+    position: absolute;
+    background-color: #8CBF39;
+    width: 20px;
+    height: 250px;
+    bottom: -250px;
+    left: calc(50% - 10px);
+  }
+
+  .flower-center {
+    position: absolute;
+    background-color: #FFD700;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    bottom: -120px;
+    left: calc(50% - 30px);
+  }
+
+  /* Add cloud animation */
+  @keyframes cloud-animation {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .clouds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background-image: url('cloud.png');
+    animation: cloud-animation 60s linear infinite;
+    opacity: 0.5; /* Adjust the opacity to your preference */
+    background-repeat: repeat-x;
+    background-size: contain;
+  }
+
+/* Adjust the styles for the buttons */
+button {
+    font-size: 16px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #E6E6FA; /* Lilac color */
+    color: #000000; /* Black color */
+    cursor: pointer;
+    border-radius: 20px; /* Rounder corners */
+  }
+
+  #click-button {
+    font-size: 24px;
+    padding: 10px 20px;
+  }
+
+  .game-modes {
+    display: flex;
+    justify-content: space-between; /* Adjust spacing between buttons */
+    margin-bottom: 20px;
+  }
+
+  .made-by {
+    display: flex;
+    justify-content: flex-end; /* Align the element to the right */
+    margin-top: 20px; /* Add some top margin */
+  }
+
+  .made-by button {
+    padding: 5px 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    color: #000000;
+    cursor: pointer;
+  }
+
+  .made-by button:hover {
+    text-decoration: underline;
+  }
+
