@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Strength Evaluator - Result</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Futura&display=swap');
+    </style>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='brute.css') }}">
+</head>
+<body>
+    <h1>Password Strength Evaluator - Result</h1>
+    <div class="container">
+        <form action="/evaluate" method="post">
+            <label for="password">Enter a password:</label>
+            <input type="password" name="password" id="password" required>
+            <button type="submit">Evaluate</button>
+        </form>
+        <p><a href="https://github.com/pasekaalex">Check out my GitHub profile</a></p>
+    </div>
+<p></p>
+    <div class="result-container">
+        {% if password %}
+        <div class="result">
+            <h2>Result</h2>
+            <p>Password: {{ password }}</p>
+            <p>Elapsed time: {{ elapsed_time }} seconds</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
