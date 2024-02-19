@@ -45,6 +45,10 @@
         font-size: 18px;
         color: #333;
     }
+    #cookieFactoryCount {
+        font-size: 18px;
+        color: #333;
+    }
     #historyContainer {
         display: none;
         max-width: 800px;
@@ -76,13 +80,14 @@
             <img src="jar.jpeg" alt="Jar of Peanut Butter">
         </button>
         <div id="peanutButterCount">Peanut Butter: 0</div>
-        <div id="autoClickersCount">Grandmas: 0</div>
-        <button onclick="buyAutoClicker()"><i class="fas fa-cookie"></i> Buy Grandma (Cost: 10 Peanut Butter)</button>
-        <button onclick="buyCookieFactory()"><i class="fas fa-cookie"></i> Buy Cookie Factory (Cost: 100 Peanut Butter)</button>
+        <div id="autoClickersCount">Grandmas: 0 (Cost: 10 Peanut Butter)</div>
+        <div id="cookieFactoryCount">Cookie Factories: 0 (Cost: 100 Peanut Butter)</div>
+        <button onclick="buyAutoClicker()"><i class="fas fa-cookie"></i> Buy Grandma</button>
+        <button onclick="buyCookieFactory()"><i class="fas fa-cookie"></i> Buy Peanut Butter Factory</button>
     </div>
     <div id="historyContainer" class="hide">
         <h2>History of Peanut Butter</h2>
-        <p>The earliest references to peanut butter can be traced to Aztec and Inca civilizations, who ground roasted peanuts into a paste. However, several people can be credited with the invention of modern peanut butter and the processes involved in making it. The US National Peanut Board credits three modern inventors with the earliest patents related to the production of modern peanut butter. Marcellus Gilmore Edson of Montreal, Quebec, Canada, obtained the first patent for a method of producing peanut butter from roasted peanuts using heated surfaces in 1884. Edson's cooled product had "a consistency like that of butter, lard, or ointment" according to his patent application which described a process of milling roasted peanuts until the peanuts reached "a fluid or semi-fluid state". He mixed sugar into the paste to harden its consistency.A businessman from St. Louis named George Bayle produced and sold peanut butter in the form of a snack food in 1894. By 1917, American consumers used peanut products during periods of meat rationing, with government promotions of "meatless Mondays" when peanut butter was a favored choice. John Harvey Kellogg, known for his line of prepared breakfast cereals, was an advocate of using plant foods as a healthier dietary choice than meat.[6] He was issued a patent for a "Process of Producing Alimentary Products" on May 24, 1898, and used peanuts, although he boiled the peanuts rather than roasting them. Kellogg's Western Health Reform Institute served peanut butter to patients because they needed a food that contained a lot of protein that could be eaten without chewing. At first, peanut butter was a food for wealthy people, as it became popular initially as a product served at expensive health care institutes. Although often credited with its invention, George Washington Carver did not invent peanut butter. By the time Carver published his document about peanuts, entitled "How to Grow the Peanut and 105 Ways of Preparing it For Human Consumption" in 1916,[10] many methods of preparation of peanut butter had already been developed or patented by various pharmacists, doctors, and food scientists working in the US and Canada.</p>
+        <p>The earliest references to peanut butter can be traced to Aztec and Inca civilizations, who ground roasted peanuts into a paste. However, several people can be credited with the invention of modern peanut butter and the processes involved in making it. The US National Peanut Board credits three modern inventors with the earliest patents related to the production of modern peanut butter.[3] Marcellus Gilmore Edson of Montreal, Quebec, Canada, obtained the first patent for a method of producing peanut butter from roasted peanuts using heated surfaces in 1884.[4] Edson's cooled product had "a consistency like that of butter, lard, or ointment" according to his patent application which described a process of milling roasted peanuts until the peanuts reached "a fluid or semi-fluid state". He mixed sugar into the paste to harden its consistency.A businessman from St. Louis named George Bayle produced and sold peanut butter in the form of a snack food in 1894. By 1917, American consumers used peanut products during periods of meat rationing, with government promotions of "meatless Mondays" when peanut butter was a favored choice. John Harvey Kellogg, known for his line of prepared breakfast cereals, was an advocate of using plant foods as a healthier dietary choice than meat.[6] He was issued a patent for a "Process of Producing Alimentary Products" on May 24, 1898, and used peanuts, although he boiled the peanuts rather than roasting them. Kellogg's Western Health Reform Institute served peanut butter to patients because they needed a food that contained a lot of protein that could be eaten without chewing.[5][6] At first, peanut butter was a food for wealthy people, as it became popular initially as a product served at expensive health care institutes. Although often credited with its invention, George Washington Carver did not invent peanut butter.[9] By the time Carver published his document about peanuts, entitled "How to Grow the Peanut and 105 Ways of Preparing it For Human Consumption" in 1916,[10] many methods of preparation of peanut butter had already been developed or patented by various pharmacists, doctors, and food scientists working in the US and Canada.</p>
     </div>
 </div>
 
@@ -90,6 +95,8 @@
     let peanutButter = 0;
     let grandmas = 0;
     let cookieFactories = 0;
+    let grandmaCost = 10;
+    let cookieFactoryCost = 100;
 
     function clickJar() {
         peanutButter++;
@@ -97,9 +104,10 @@
     }
 
     function buyAutoClicker() {
-        if (peanutButter >= 10) {
-            peanutButter -= 10;
+        if (peanutButter >= grandmaCost) {
+            peanutButter -= grandmaCost;
             grandmas++;
+            grandmaCost = Math.ceil(grandmaCost * 1.05); // Increase cost by 5%
             updateCounts();
             setInterval(autoClick, 1000);
         } else {
@@ -108,9 +116,10 @@
     }
 
     function buyCookieFactory() {
-        if (peanutButter >= 100) {
-            peanutButter -= 100;
+        if (peanutButter >= cookieFactoryCost) {
+            peanutButter -= cookieFactoryCost;
             cookieFactories++;
+            cookieFactoryCost = Math.ceil(cookieFactoryCost * 1.05); // Increase cost by 5%
             updateCounts();
             setInterval(autoCookieFactory, 5000);
         } else {
@@ -130,7 +139,8 @@
 
     function updateCounts() {
         document.getElementById("peanutButterCount").textContent = "Peanut Butter: " + peanutButter;
-        document.getElementById("autoClickersCount").textContent = "Grandmas: " + grandmas;
+        document.getElementById("autoClickersCount").textContent = "Grandmas: " + grandmas + " (Cost: " + grandmaCost + " Peanut Butter)";
+        document.getElementById("cookieFactoryCount").textContent = "Cookie Factories: " + cookieFactories + " (Cost: " + cookieFactoryCost + " Peanut Butter)";
     }
 
     // Add event listeners to navbar tabs
