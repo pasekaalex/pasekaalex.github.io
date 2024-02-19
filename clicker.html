@@ -45,7 +45,15 @@
         font-size: 18px;
         color: #333;
     }
-    #cookieFactoryCount {
+    #peanutButterFactoryCount {
+        font-size: 18px;
+        color: #333;
+    }
+    #portalCount {
+        font-size: 18px;
+        color: #333;
+    }
+    #ppsCount {
         font-size: 18px;
         color: #333;
     }
@@ -87,9 +95,12 @@
         </button>
         <div id="peanutButterCount">Peanut Butter: 0</div>
         <div id="autoClickersCount">Grandmas: 0 (Cost: 10 Peanut Butter)</div>
-        <div id="cookieFactoryCount">Cookie Factories: 0 (Cost: 100 Peanut Butter)</div>
+        <div id="peanutButterFactoryCount">Peanut Butter Factories: 0 (Cost: 100 Peanut Butter)</div>
+        <div id="portalCount">Peanut Butter Portals: 0 (Cost: 1 Billion Peanut Butter)</div>
+        <div id="ppsCount">Peanut Butter Per Second: 0</div>
         <button onclick="buyAutoClicker()"><i class="fas fa-cookie"></i> Buy Grandma</button>
-        <button onclick="buyCookieFactory()"><i class="fas fa-cookie"></i> Buy Peanut Butter Factory</button>
+        <button onclick="buyPeanutButterFactory()"><i class="fas fa-cookie"></i> Buy Peanut Butter Factory</button>
+        <button onclick="buyPortal()"><i class="fas fa-cookie"></i> Buy Peanut Butter Portal</button>
     </div>
     <div id="historyContainer" class="hide">
         <h2>History of Peanut Butter</h2>
@@ -100,9 +111,12 @@
 <script>
     let peanutButter = 0;
     let grandmas = 0;
-    let cookieFactories = 0;
+    let peanutButterFactories = 0;
+    let portals = 0;
     let grandmaCost = 10;
-    let cookieFactoryCost = 100;
+    let peanutButterFactoryCost = 100;
+    let portalCost = 1000000000;
+    let pps = 0;
 
     function clickJar() {
         peanutButter++;
@@ -121,15 +135,27 @@
         }
     }
 
-    function buyCookieFactory() {
-        if (peanutButter >= cookieFactoryCost) {
-            peanutButter -= cookieFactoryCost;
-            cookieFactories++;
-            cookieFactoryCost = Math.ceil(cookieFactoryCost * 1.05); // Increase cost by 5%
+    function buyPeanutButterFactory() {
+        if (peanutButter >= peanutButterFactoryCost) {
+            peanutButter -= peanutButterFactoryCost;
+            peanutButterFactories++;
+            peanutButterFactoryCost = Math.ceil(peanutButterFactoryCost * 1.05); // Increase cost by 5%
             updateCounts();
-            setInterval(autoCookieFactory, 5000);
+            setInterval(autoPeanutButterFactory, 5000);
         } else {
-            alert("Not enough peanut butter to buy a Cookie Factory!");
+            alert("Not enough peanut butter to buy a Peanut Butter Factory!");
+        }
+    }
+
+    function buyPortal() {
+        if (peanutButter >= portalCost) {
+            peanutButter -= portalCost;
+            portals++;
+            portalCost = Math.ceil(portalCost * 1.1); // Increase cost by 10%
+            updateCounts();
+            setInterval(autoPortal, 1000);
+        } else {
+            alert("Not enough peanut butter to buy a Peanut Butter Portal!");
         }
     }
 
@@ -138,15 +164,23 @@
         updateCounts();
     }
 
-    function autoCookieFactory() {
-        peanutButter += 10 * cookieFactories;
+    function autoPeanutButterFactory() {
+        peanutButter += 10 * peanutButterFactories;
+        updateCounts();
+    }
+
+    function autoPortal() {
+        peanutButter += 100 * portals;
         updateCounts();
     }
 
     function updateCounts() {
+        pps = grandmas + 10 * peanutButterFactories + 100 * portals;
         document.getElementById("peanutButterCount").textContent = "Peanut Butter: " + peanutButter;
         document.getElementById("autoClickersCount").textContent = "Grandmas: " + grandmas + " (Cost: " + grandmaCost + " Peanut Butter)";
-        document.getElementById("cookieFactoryCount").textContent = "Cookie Factories: " + cookieFactories + " (Cost: " + cookieFactoryCost + " Peanut Butter)";
+        document.getElementById("peanutButterFactoryCount").textContent = "Peanut Butter Factories: " + peanutButterFactories + " (Cost: " + peanutButterFactoryCost + " Peanut Butter)";
+        document.getElementById("portalCount").textContent = "Peanut Butter Portals: " + portals + " (Cost: " + portalCost + " Peanut Butter)";
+        document.getElementById("ppsCount").textContent = "Peanut Butter Per Second: " + pps;
     }
 
     // Add event listeners to navbar tabs
