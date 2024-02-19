@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #game-container {
+            width: 300px;
+            height: 300px;
+            border: 2px solid #000;
+            position: relative;
+            overflow: hidden;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+        }
+
+        #snake, #food {
+            width: 10px;
+            height: 10px;
+            background-color: #ffa07a;
+            position: absolute;
+            border-radius: 50%;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        #food {
+            background-color: #ffd700;
+            transform: scale(1.2);
+        }
+
+        @keyframes moveAnimation {
+            0% { transform: scale(0.9); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(0.9); }
+        }
+
+        .snakePart {
+            width: 10px;
+            height: 10px;
+            background-color: #98fb98;
+            position: absolute;
+            border-radius: 50%;
+            animation: moveAnimation 0.3s infinite alternate;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <div id="snake"></div>
+        <div id="food"></div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const gameContainer = document.getElementById('game-container');
+            const snake = document.getElementById('snake');
+            const food = document.getElementById('food');
+
+            let snakeParts = [];
+            let snakeLength = 1;
+            let snakeX = 150;
+            let snakeY = 150;
+            let foodX = 0;
+            let foodY = 0;
+            let dx = 0;
+            let dy = 0;
+            const tileSize = 10;
+
+            function randomPosition() {
+                return Math.floor(Math.random() * 30) * tileSize;
+            }
+
+            function moveSnake() {
+                snakeX += dx;
+                snakeY += dy;
+                if (snakeX < 0 || snakeX >= 300 || snakeY < 0 || snakeY >= 300) {
+                    gameOver();
+                    return;
+                }
+                snake.style.left = snakeX + 'px';
+                snake.style.top = snakeY + 'px';
+
+                if (snakeX === foodX && snakeY === foodY) {
+                    snakeLength++;
+                    createSnakePart();
+                    foodX = randomPosition();
+                    foodY = randomPosition();
+                    food.style.left = foodX + 'px';
+                    food.style.top = foodY + 'px';
+                }
+
+                for (let i = snakeParts.length - 1; i >= 1; i--) {
+                    snakeParts[i].style.left = snakeParts[i - 1].style.left;
+                    snakeParts[i].style.top = snakeParts[i - 1].style.top;
+                }
+
+                if (snakeParts.length > 0) {
+                    snakeParts[0].style.left = snakeX + 'px';
+                    snakeParts[0].style.top = snakeY + 'px';
+                }
+            }
+
+            function createSnakePart() {
+                const snakePart = document.createElement('div');
+                snakePart.classList.add('snakePart');
+                snakePart.style.left = snakeX + 'px';
+                snakePart.style.top = snakeY + 'px';
+                gameContainer.appendChild(snakePart);
+                snakeParts.push(snakePart);
+            }
+
+            function gameOver() {
+                alert('Game Over!');
+                // You can add more actions here for game over
+            }
+
+            document.addEventListener('keydown', (e) => {
+                switch (e.key) {
+                    case 'ArrowUp':
+                        if (dy !== tileSize) {
+                            dx = 0;
+                            dy = -tileSize;
+                        }
+                        break;
+                    case 'ArrowDown':
+                        if (dy !== -tileSize) {
+                            dx = 0;
+                            dy = tileSize;
+                        }
+                        break;
+                    case 'ArrowLeft':
+                        if (dx !== tileSize) {
+                            dx = -tileSize;
+                            dy = 0;
+                        }
+                        break;
+                    case 'ArrowRight':
+                        if (dx !== -tileSize) {
+                            dx = tileSize;
+                            dy = 0;
+                        }
+                        break;
+                }
+            });
+
+            foodX = randomPosition();
+            foodY = randomPosition();
+            food.style.left = foodX + 'px';
+            food.style.top = foodY + 'px';
+
+            setInterval(moveSnake, 100);
+        });
+    </script>
+</body>
+</html>
