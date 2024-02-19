@@ -23,6 +23,7 @@
             overflow: hidden;
             background-color: #f9f9f9;
             border-radius: 10px;
+            margin-top: 25px; /* Space added between title/instructions and game container */
         }
 
         #snake, #food {
@@ -50,7 +51,7 @@
 
         #instructions {
             position: absolute;
-            top: calc(100% + 10px); /* Position below the game area */
+            top: 50px; /* Adjusted top position */
             left: 50%;
             transform: translateX(-50%);
             text-align: center;
@@ -61,7 +62,7 @@
 
         #title {
             position: absolute;
-            top: calc(100% + 40px); /* Position below the game area */
+            top: 25px; /* Adjusted top position */
             left: 50%;
             transform: translateX(-50%);
             text-align: center;
@@ -72,13 +73,13 @@
     </style>
 </head>
 <body>
-    <div id="game-container">
-        <div id="snake"></div>
-        <div id="food"></div>
-    </div>
     <div id="title">THE PASEKA SNAKE GAME (ORIGINAL)</div>
     <div id="instructions">
         Use the Arrow Keys to move the Snake. Get the apple to get longer. Try to get as long as you can! Good Luck!
+    </div>
+    <div id="game-container">
+        <div id="snake"></div>
+        <div id="food"></div>
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
