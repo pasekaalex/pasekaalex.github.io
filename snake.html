@@ -17,7 +17,7 @@
 
         #game-container {
             width: 300px;
-            height: 300px;
+            height: 340px; /* Increased height for score display */
             border: 2px solid #000;
             position: relative;
             overflow: hidden;
@@ -39,12 +39,6 @@
             transform: scale(1.2);
         }
 
-        @keyframes moveAnimation {
-            0% { transform: scale(0.9); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(0.9); }
-        }
-
         .snakePart {
             width: 10px;
             height: 10px;
@@ -53,18 +47,93 @@
             border-radius: 50%;
             animation: moveAnimation 0.3s infinite alternate;
         }
+
+        .control-button {
+            width: 50px;
+            height: 50px;
+            background-color: #90EE90;
+            border: 2px solid #000;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            cursor: pointer;
+        }
+
+        .control-button.up {
+            top: 10px;
+            left: 125px;
+        }
+
+        .control-button.down {
+            bottom: 10px;
+            left: 125px;
+        }
+
+        .control-button.left {
+            top: 125px;
+            left: 10px;
+        }
+
+        .control-button.right {
+            top: 125px;
+            right: 10px;
+        }
+
+        #instructions {
+            position: absolute;
+            top: 60px; /* Adjusted top position */
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: #333;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        #score {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #333;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        #title {
+            position: absolute;
+            top: 20px; /* Adjusted top position */
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: #333;
+            font-size: 18px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <div id="game-container">
+        <div id="title">THE PASEKA SNAKE GAME (ORIGINAL)</div>
+        <div id="instructions">
+            Use the Arrow Keys to move the Snake. Get the apple to get longer. Try to get as long as you can! Good Luck!
+        </div>
+        <div id="score">Score: 0</div>
         <div id="snake"></div>
         <div id="food"></div>
+        <div class="control-button up">&#8593;</div>
+        <div class="control-button down">&#8595;</div>
+        <div class="control-button left">&#8592;</div>
+        <div class="control-button right">&#8594;</div>
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const gameContainer = document.getElementById('game-container');
             const snake = document.getElementById('snake');
             const food = document.getElementById('food');
+            const scoreDisplay = document.getElementById('score');
 
             let snakeParts = [];
             let snakeLength = 1;
@@ -74,6 +143,7 @@
             let foodY = 0;
             let dx = 0;
             let dy = 0;
+            let score = 0; // Score counter
             const tileSize = 10;
 
             function randomPosition() {
@@ -83,7 +153,7 @@
             function moveSnake() {
                 snakeX += dx;
                 snakeY += dy;
-                if (snakeX < 0 || snakeX >= 300 || snakeY < 0 || snakeY >= 300) {
+                if (snakeX < 0 || snakeX >= 300 || snakeY < 0 || snakeY >= 300 || checkCollision()) {
                     gameOver();
                     return;
                 }
@@ -97,6 +167,8 @@
                     foodY = randomPosition();
                     food.style.left = foodX + 'px';
                     food.style.top = foodY + 'px';
+                    score++; // Increment score
+                    scoreDisplay.textContent = 'Score: ' + score; // Update score display
                 }
 
                 for (let i = snakeParts.length - 1; i >= 1; i--) {
@@ -119,38 +191,54 @@
                 snakeParts.push(snakePart);
             }
 
+            function checkCollision() {
+                for (let i = 0; i < snakeParts.length; i++) {
+                    if (snakeX === parseInt(snakeParts[i].style.left) && snakeY === parseInt(snakeParts[i].style.top)) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+
             function gameOver() {
-                alert('Game Over!');
+                alert('Game Over! Your score: ' + score);
                 // You can add more actions here for game over
             }
 
-            document.addEventListener('keydown', (e) => {
-                switch (e.key) {
-                    case 'ArrowUp':
+            function move(direction) {
+                switch (direction) {
+                    case 'up':
                         if (dy !== tileSize) {
                             dx = 0;
                             dy = -tileSize;
                         }
                         break;
-                    case 'ArrowDown':
+                    case 'down':
                         if (dy !== -tileSize) {
                             dx = 0;
                             dy = tileSize;
                         }
                         break;
-                    case 'ArrowLeft':
+                    case 'left':
                         if (dx !== tileSize) {
                             dx = -tileSize;
                             dy = 0;
                         }
                         break;
-                    case 'ArrowRight':
+                    case 'right':
                         if (dx !== -tileSize) {
                             dx = tileSize;
                             dy = 0;
                         }
                         break;
                 }
+            }
+
+            document.querySelectorAll('.control-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    const direction = button.classList[1];
+                    move(direction);
+                });
             });
 
             foodX = randomPosition();
