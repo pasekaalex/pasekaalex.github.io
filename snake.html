@@ -48,39 +48,6 @@
             animation: moveAnimation 0.3s infinite alternate;
         }
 
-        .control-button {
-            width: 50px;
-            height: 50px;
-            background-color: #90EE90;
-            border: 2px solid #000;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: absolute;
-            cursor: pointer;
-        }
-
-        .control-button.up {
-            top: 10px;
-            left: 125px;
-        }
-
-        .control-button.down {
-            bottom: 10px;
-            left: 125px;
-        }
-
-        .control-button.left {
-            top: 125px;
-            left: 10px;
-        }
-
-        .control-button.right {
-            top: 125px;
-            right: 10px;
-        }
-
         #instructions {
             position: absolute;
             top: calc(100% + 10px); /* Position below the game area */
@@ -108,10 +75,6 @@
     <div id="game-container">
         <div id="snake"></div>
         <div id="food"></div>
-        <div class="control-button up">&#8593;</div>
-        <div class="control-button down">&#8595;</div>
-        <div class="control-button left">&#8592;</div>
-        <div class="control-button right">&#8594;</div>
     </div>
     <div id="title">THE PASEKA SNAKE GAME (ORIGINAL)</div>
     <div id="instructions">
@@ -219,11 +182,22 @@
                 }
             }
 
-            document.querySelectorAll('.control-button').forEach(button => {
-                button.addEventListener('click', () => {
-                    const direction = button.classList[1];
-                    move(direction);
-                });
+            document.addEventListener('keydown', (event) => {
+                const key = event.key;
+                switch (key) {
+                    case 'ArrowUp':
+                        move('up');
+                        break;
+                    case 'ArrowDown':
+                        move('down');
+                        break;
+                    case 'ArrowLeft':
+                        move('left');
+                        break;
+                    case 'ArrowRight':
+                        move('right');
+                        break;
+                }
             });
 
             foodX = randomPosition();
