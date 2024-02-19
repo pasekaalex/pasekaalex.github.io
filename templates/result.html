@@ -8,12 +8,13 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='brute.css') }}">
 </head>
 <body>
-    <h1>Password Strength Evaluator - Result</h1>
+    <div class="container">
+    <h1>Password Strength Evaluator - Result</h1></div><p></p>
     <div class="container">
         <form action="/evaluate" method="post">
             <label for="password">Enter a password:</label>
             <input type="password" name="password" id="password" required>
-            <button type="submit">Evaluate</button>
+            <p></p><button type="submit">Evaluate</button>
         </form>
         <p><a href="https://github.com/pasekaalex">Check out my GitHub profile</a></p>
     </div>

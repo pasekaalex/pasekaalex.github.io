@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ACOUSTIC</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fde7e9; /* Pink */
+  }
+
+  h1 {
+    font-family: 'Arial', sans-serif;
+    font-size: 6em;
+    color: #33ff99; /* Green */
+    text-transform: uppercase;
+    position: relative;
+    animation: floatUpDown 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes floatUpDown {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  h1:hover {
+    animation-play-state: paused;
+  }
+
+  /* Cursor Animation */
+  h1::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ffff66; /* Yellow */
+    border-radius: 50%;
+    animation: cursorAnimation 0.3s infinite alternate;
+  }
+
+  @keyframes cursorAnimation {
+    0%, 100% {
+      transform: translate(-50%, -50%);
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1.2);
+    }
+  }
+</style>
+</head>
+<body>
+
+<h1>ACOUSTIC</h1>
+
+</body>
+</html>
