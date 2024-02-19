@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peanut Butter Clicker</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+    }
+    .navbar {
+        background-color: #4CAF50;
+        overflow: hidden;
+    }
+    .navbar a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+        font-size: 18px;
+    }
+    .navbar a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+    #container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+    #peanutButterCount {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #333;
+    }
+    #autoClickersCount {
+        font-size: 18px;
+        color: #333;
+    }
+    #historyContainer {
+        display: none;
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .hide {
+        display: none;
+    }
+    #clickJarButton {
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<div class="navbar">
+    <a href="#" id="homeTab"><i class="fas fa-cookie"></i> Home</a>
+    <a href="#" id="historyTab"><i class="fas fa-history"></i> History</a>
+</div>
+<div id="container">
+    <div id="clickerContainer">
+        <h1>Peanut Butter Clicker</h1>
+        <button id="clickJarButton" onclick="clickJar()">
+            <img src="jar.jpeg" alt="Jar of Peanut Butter">
+        </button>
+        <div id="peanutButterCount">Peanut Butter: 0</div>
+        <div id="autoClickersCount">Grandmas: 0</div>
+        <button onclick="buyAutoClicker()"><i class="fas fa-cookie"></i> Buy Grandma (Cost: 10 Peanut Butter)</button>
+        <button onclick="buyCookieFactory()"><i class="fas fa-cookie"></i> Buy Cookie Factory (Cost: 100 Peanut Butter)</button>
+    </div>
+    <div id="historyContainer" class="hide">
+        <h2>History of Peanut Butter</h2>
+        <p>The earliest references to peanut butter can be traced to Aztec and Inca civilizations, who ground roasted peanuts into a paste. However, several people can be credited with the invention of modern peanut butter and the processes involved in making it. The US National Peanut Board credits three modern inventors with the earliest patents related to the production of modern peanut butter. Marcellus Gilmore Edson of Montreal, Quebec, Canada, obtained the first patent for a method of producing peanut butter from roasted peanuts using heated surfaces in 1884. Edson's cooled product had "a consistency like that of butter, lard, or ointment" according to his patent application which described a process of milling roasted peanuts until the peanuts reached "a fluid or semi-fluid state". He mixed sugar into the paste to harden its consistency.A businessman from St. Louis named George Bayle produced and sold peanut butter in the form of a snack food in 1894. By 1917, American consumers used peanut products during periods of meat rationing, with government promotions of "meatless Mondays" when peanut butter was a favored choice. John Harvey Kellogg, known for his line of prepared breakfast cereals, was an advocate of using plant foods as a healthier dietary choice than meat.[6] He was issued a patent for a "Process of Producing Alimentary Products" on May 24, 1898, and used peanuts, although he boiled the peanuts rather than roasting them. Kellogg's Western Health Reform Institute served peanut butter to patients because they needed a food that contained a lot of protein that could be eaten without chewing. At first, peanut butter was a food for wealthy people, as it became popular initially as a product served at expensive health care institutes. Although often credited with its invention, George Washington Carver did not invent peanut butter. By the time Carver published his document about peanuts, entitled "How to Grow the Peanut and 105 Ways of Preparing it For Human Consumption" in 1916,[10] many methods of preparation of peanut butter had already been developed or patented by various pharmacists, doctors, and food scientists working in the US and Canada.</p>
+    </div>
+</div>
+
+<script>
+    let peanutButter = 0;
+    let grandmas = 0;
+    let cookieFactories = 0;
+
+    function clickJar() {
+        peanutButter++;
+        updateCounts();
+    }
+
+    function buyAutoClicker() {
+        if (peanutButter >= 10) {
+            peanutButter -= 10;
+            grandmas++;
+            updateCounts();
+            setInterval(autoClick, 1000);
+        } else {
+            alert("Not enough peanut butter to buy a Grandma!");
+        }
+    }
+
+    function buyCookieFactory() {
+        if (peanutButter >= 100) {
+            peanutButter -= 100;
+            cookieFactories++;
+            updateCounts();
+            setInterval(autoCookieFactory, 5000);
+        } else {
+            alert("Not enough peanut butter to buy a Cookie Factory!");
+        }
+    }
+
+    function autoClick() {
+        peanutButter += grandmas;
+        updateCounts();
+    }
+
+    function autoCookieFactory() {
+        peanutButter += 10 * cookieFactories;
+        updateCounts();
+    }
+
+    function updateCounts() {
+        document.getElementById("peanutButterCount").textContent = "Peanut Butter: " + peanutButter;
+        document.getElementById("autoClickersCount").textContent = "Grandmas: " + grandmas;
+    }
+
+    // Add event listeners to navbar tabs
+    document.getElementById("homeTab").addEventListener("click", function() {
+        document.getElementById("clickerContainer").classList.remove("hide");
+        document.getElementById("historyContainer").classList.add("hide");
+    });
+
+    document.getElementById("historyTab").addEventListener("click", function() {
+        document.getElementById("clickerContainer").classList.add("hide");
+        document.getElementById("historyContainer").classList.remove("hide");
+    });
+</script>
+
+</body>
+</html>
