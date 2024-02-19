@@ -17,7 +17,7 @@
 
         #game-container {
             width: 300px;
-            height: 340px; /* Increased height for score display */
+            height: 300px;
             border: 2px solid #000;
             position: relative;
             overflow: hidden;
@@ -83,7 +83,7 @@
 
         #instructions {
             position: absolute;
-            top: 60px; /* Adjusted top position */
+            top: calc(100% + 10px); /* Position below the game area */
             left: 50%;
             transform: translateX(-50%);
             text-align: center;
@@ -92,19 +92,9 @@
             font-weight: bold;
         }
 
-        #score {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #333;
-            font-size: 16px;
-            font-weight: bold;
-        }
-
         #title {
             position: absolute;
-            top: 20px; /* Adjusted top position */
+            top: calc(100% + 40px); /* Position below the game area */
             left: 50%;
             transform: translateX(-50%);
             text-align: center;
@@ -116,11 +106,6 @@
 </head>
 <body>
     <div id="game-container">
-        <div id="title">THE PASEKA SNAKE GAME (ORIGINAL)</div>
-        <div id="instructions">
-            Use the Arrow Keys to move the Snake. Get the apple to get longer. Try to get as long as you can! Good Luck!
-        </div>
-        <div id="score">Score: 0</div>
         <div id="snake"></div>
         <div id="food"></div>
         <div class="control-button up">&#8593;</div>
@@ -128,12 +113,15 @@
         <div class="control-button left">&#8592;</div>
         <div class="control-button right">&#8594;</div>
     </div>
+    <div id="title">THE PASEKA SNAKE GAME (ORIGINAL)</div>
+    <div id="instructions">
+        Use the Arrow Keys to move the Snake. Get the apple to get longer. Try to get as long as you can! Good Luck!
+    </div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const gameContainer = document.getElementById('game-container');
             const snake = document.getElementById('snake');
             const food = document.getElementById('food');
-            const scoreDisplay = document.getElementById('score');
 
             let snakeParts = [];
             let snakeLength = 1;
@@ -143,7 +131,6 @@
             let foodY = 0;
             let dx = 0;
             let dy = 0;
-            let score = 0; // Score counter
             const tileSize = 10;
 
             function randomPosition() {
@@ -167,8 +154,6 @@
                     foodY = randomPosition();
                     food.style.left = foodX + 'px';
                     food.style.top = foodY + 'px';
-                    score++; // Increment score
-                    scoreDisplay.textContent = 'Score: ' + score; // Update score display
                 }
 
                 for (let i = snakeParts.length - 1; i >= 1; i--) {
@@ -201,7 +186,7 @@
             }
 
             function gameOver() {
-                alert('Game Over! Your score: ' + score);
+                alert('Game Over!');
                 // You can add more actions here for game over
             }
 
